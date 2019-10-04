@@ -4,7 +4,8 @@ import time
 import random
 from selenium.common.exceptions import NoSuchElementException
 from random import randint
-from pynput.keyboard import Key, Controller as KeyboardController
+from pynput.keyboard import Key, Controller as KeyboardController #this is only going to work if you are using one single screen (this is a bad idea), but
+#instagram blocks some of the operations like ex. trying to send keys using webdriver. 
 
 keyboard = KeyboardController()
 
@@ -29,7 +30,7 @@ class InstagramBot:
         self.username = username
         self.password = password
         self.base_url = 'https://www.instagram.com'
-        self.driver = webdriver.Firefox(executable_path=r'C:\Users\Piotrek\Desktop\geckodriver\geckodriver')
+        self.driver = webdriver.Firefox(executable_path=r'C:\Users\Piotrek\Desktop\geckodriver\geckodriver') #full path to your geckodriver
 
     def login(self):
         driver = self.driver
@@ -56,7 +57,7 @@ class InstagramBot:
         while follow_counter <= number_to_follow:
             temp = '/html/body/div[3]/div/div[2]/ul/div/li[{}]/div/div[3]/button'.format(num)
             temp_alternative = '/html/body/div[3]/div/div[2]/ul/div/li[{}]/div/div[2]/button'.format(num)
-            # Instagram changes a structure of their website. One of these temps will work.
+            # Instagram changes the structure of their website. One of these temps will work.
             try:
                 temp_elem = self.driver.find_element_by_xpath(temp)
             except NoSuchElementException:
@@ -89,7 +90,7 @@ class InstagramBot:
         print('Users followed: ' + str(follow_counter))
 
     def like_and_comment_hashtags(self, hashtag, number):
-        def chill():
+        def chill(): #chill has been created to show instagram, that we operate not like a bot
             time.sleep(randint(2, 4))
         i = 0
         number_of_likes_and_comments = number
@@ -173,9 +174,9 @@ class InstagramBot:
 
 
 
-bot = InstagramBot('crypto_bishop', 'Testowe1')
+bot = InstagramBot('', '')
 bot.login()
 time.sleep(5)
-bot.user_to_follow('cryptowzrd', 18)
+bot.user_to_follow('', 18)
 
 
