@@ -134,17 +134,16 @@ class InstagramBot:
                 chill()
                 keyboard.type(comments[randint(0, 12)])
                 chill()
-                chill()
-                chill()
+      
                 publish_button = driver.find_element_by_xpath(
                     '/html/body/div[3]/div[2]/div/article/div[2]/section[3]/div/form/button')
                 publish_button.click()
                 chill()
-                chill()
+               
                 quit_photo = driver.find_element_by_xpath('/html/body/div[3]/button[1]')
                 quit_photo.click()
                 chill()
-                chill()
+              
                 time.sleep(randint(60, 120))
                 hashtags_commented_and_liked += 1
 
